@@ -23,7 +23,6 @@ while True:
             new_todo = values["todo"] + "\n"
             todos.append(new_todo)
             functions.write_todos(todos, "todos.txt")
-            break
-        case "Exit":
+        case WIN_CLOSED:
             break
     window.close()

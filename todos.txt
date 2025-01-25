@@ -18,3 +18,4 @@ ali
 namak
 bahman
 esfand
+close
