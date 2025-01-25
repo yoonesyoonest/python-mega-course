@@ -3,7 +3,7 @@ import PySimpleGUI as sg
 import functions
 
 label = sg.Text("Type in a to-do")
-input_box = sg.InputText(tooltip="Enter todo")
+input_box = sg.InputText(tooltip="Enter todo", key="todo")
 add_button = sg.Button("Add")
 list_box = sg.Listbox(values=functions.get_todos("todos.txt"), key="todos",
                       enable_events=True, size=[45,15])
@@ -19,7 +19,11 @@ while True:
     print(values)
     match event:
         case "Add":
-            todos = functions.get_todos()
+            todos = functions.get_todos("todos.txt")
             new_todo = values["todo"] + "\n"
             todos.append(new_todo)
+            functions.write_todos(todos, "todos.txt")
+            break
+        case "Exit":
+            break
     window.close()
