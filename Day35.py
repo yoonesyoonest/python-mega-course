@@ -23,6 +23,7 @@ while True:
             new_todo = values["todo"] + "\n"
             todos.append(new_todo)
             functions.write_todos(todos, "todos.txt")
+            window["todos"].update(todos)
         case "todos":
             window["todo"].update(values["todos"][0])
         case "Edit":
@@ -33,4 +34,5 @@ while True:
             index = todos.index(todos_to_edit)
             todos[index] = new_todo + "\n"
             functions.write_todos(todos, "todos.txt")
+            window["todos"].update(todos)
 
