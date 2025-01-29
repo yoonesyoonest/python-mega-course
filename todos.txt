@@ -1,4 +1,3 @@
-Salad
 Pizza
 Pasta
 Spageti
@@ -19,3 +18,5 @@ namak
 bahman
 esfand
 close
+bahman
+namak
