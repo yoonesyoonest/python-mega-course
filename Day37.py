@@ -1,7 +1,12 @@
 import PySimpleGUI as sg
 
 import functions
+import time
 
+sg.theme('DarkTeal7')
+
+now = time.strftime("%A %b %d, %Y %H:%M:%S")
+now = sg.Text(now,key="time")
 label = sg.Text("Type in a to-do")
 input_box = sg.InputText(tooltip="Enter todo", key="todo")
 add_button = sg.Button("Add")
@@ -10,13 +15,15 @@ list_box = sg.Listbox(values=functions.get_todos("todos.txt"), key="todos",
 
 edit_button = sg.Button("Edit")
 complete_button = sg.Button("Complete")
+exit_button = sg.Button("Exit")
 
 button_labels = ["Close", "Apply"]
 
-window = sg.Window('My To-Do App', layout=[[label, input_box, add_button],[list_box,edit_button,complete_button]])
+window = sg.Window('My To-Do App', layout=[[now],[label, input_box, add_button],[list_box,edit_button,complete_button],[exit_button]])
 
 while True:
-    event, values = window.read()
+    event, values = window.read(timeout=1000)
+    window["time"].update(time.strftime("%A %b %d, %Y %H:%M:%S"))
     print(event, values)
     match event:
         case "Add":
