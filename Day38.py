@@ -16,9 +16,15 @@ st.write("This app is to increase your prokuctivity")
 
 
 for index,todo in enumerate(todos):
-    st.checkbox(todo, key=f"{index}-checkbox")
+    checkbox = st.checkbox(todo, key=f"{index}-checkbox")
+    if checkbox == True:
+        todos.pop(index)
+        functions.write_todos(todos, "todos.txt")
+        del st.session_state[f"{index}-checkbox"]
+        st.rerun()
 
-# st.session_state
+
+st.session_state
 
 st.text_input(label="",placeholder="Add new todo...",
               on_change=add_todos, key='new_todo')
